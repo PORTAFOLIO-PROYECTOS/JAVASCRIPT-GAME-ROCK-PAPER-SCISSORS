@@ -40,22 +40,21 @@ function win(userChoice, computerChoice) {
     userScore++;
     userScore_span.innerHTML = userScore;
     computerScore_span.innerHTML = computerScore;
-    // const smallUserWord = "user".fontsize(3).sub();
-    // const smallCompWord = "comp".fontsize(3).sub();
     result_p.innerHTML = `${utils.convertToWord(userChoice)} wins ${utils.convertToWord(computerChoice)}<br>You win! :)`;
+    utils.addClassEffect(userChoice, "green-glow");
 }
 
 function lose(userChoice, computerChoice) {
     computerScore++;
     userScore_span.innerHTML = userScore;
     computerScore_span.innerHTML = computerScore;
-    // const smallUserWord = "user".fontsize(3).sub();
-    // const smallCompWord = "comp".fontsize(3).sub();
     result_p.innerHTML = `${utils.convertToWord(userChoice)} loses to ${utils.convertToWord(computerChoice)}<br>You lost! :(`;
+    utils.addClassEffect(userChoice, "red-glow");
 }
 
 function draw(userChoice, computerChoice) {
     result_p.innerHTML = `${utils.convertToWord(userChoice)} equals ${utils.convertToWord(computerChoice)}<br>It´s a draw!`;
+    utils.addClassEffect(userChoice, "gray-glow");
 }
 
 function init() {
