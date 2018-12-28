@@ -34,27 +34,27 @@ class Game {
         }
     }
 
-    paint() {
-        this.userScore_span.innerHTML = this.scoreWin;
-        this.computerScore_span.innerHTML = this.scoreLose;
-    }
-
     win(userChoice, computerChoice) {
         this.scoreWin++;
-        this.result_p.innerHTML = `${utils.convertToWord(userChoice)} wins ${utils.convertToWord(computerChoice)}<br>You win! :)`;
-        utils.addClassEffect(userChoice, "green-glow");
-        this.paint();
+        const text = `${utils.convertToWord(userChoice)} wins ${utils.convertToWord(computerChoice)}<br>You win! :)`;
+        this.paint(userChoice, "green-glow", text);
     }
 
     lose(userChoice, computerChoice) {
         this.scoreLose++;
-        this.result_p.innerHTML = `${utils.convertToWord(userChoice)} loses to ${utils.convertToWord(computerChoice)}<br>You lost! :(`;
-        utils.addClassEffect(userChoice, "red-glow");
-        this.paint();
+        const text = `${utils.convertToWord(userChoice)} loses to ${utils.convertToWord(computerChoice)}<br>You lost! :(`;
+        this.paint(userChoice, "red-glow", text);
     }
 
     draw(userChoice, computerChoice) {
-        this.result_p.innerHTML = `${utils.convertToWord(userChoice)} equals ${utils.convertToWord(computerChoice)}<br>It´s a draw!`;
-        utils.addClassEffect(userChoice, "gray-glow");
+        const text = `${utils.convertToWord(userChoice)} equals ${utils.convertToWord(computerChoice)}<br>It´s a draw!`;
+        this.paint(userChoice, "gray-glow", text);
+    }
+
+    paint(userChoice, _class, text) {
+        this.userScore_span.innerHTML = this.scoreWin;
+        this.computerScore_span.innerHTML = this.scoreLose;
+        this.result_p.innerHTML = text;
+        utils.addClassEffect(userChoice, _class);
     }
 }
